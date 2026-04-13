@@ -32,7 +32,13 @@ Taking the time to learn just a few bash commands is often valuable and makes yo
 
 ## How Do I Use Bash?
 
-As previously mentioned we will be making our foray into bash commands and scripting using Dartmouth's HPC systerm, Discovery. Prior to this workshop, you should have received an email from me with instructions on how to set up a Discovery account. If you still have not set up a Discovery account, you can do so using this [link]("https://dashboard.dartmouth.edu/research/hpc_account") 
+As previously mentioned we will be making our foray into bash commands and scripting using Dartmouth's HPC systerm, Discovery. Prior to this workshop, you should have received an email from me with instructions on how to set up a Discovery account. If you still have not set up a Discovery account, you can do so using this [link]("https://dashboard.dartmouth.edu/research/hpc_account"). The system to get a discovery account is automated and your account should be ship shape in about a half hour if not sooner. 
+
+Once you have created an HPC account, navigate to your local machine's terminal. For Mac folks, this should be under Go -> Utilities -> Terminal. When you launch your terminal it should look something like this:
+
+![local-machine-terminal](/image/local-machine-terminal.png)
+
+
 
 
 # Dartmouth's HPC

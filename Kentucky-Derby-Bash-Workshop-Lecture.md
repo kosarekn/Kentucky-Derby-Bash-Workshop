@@ -142,16 +142,28 @@ Use `ls` to confirm that you have renamed this file.
 
 ## Kentucky Derby Winners Data
 The Kentucky Derby, known as "The Most Exciting Two Minutes in Sports", is a horse race held at Churchill Downs in Louisville, Kentucky every first Saturday in May. The Kentucky Derby is the first race in a series of races known as the Triple Crown. The race also boasts the title of the oldest continuously running sports event in the United States.
+
+The history of the Kentucky Derby goes back to 1875 when Meriwether Lewis Clark Jr., grandson of William Clark of Lewis and Clark Expedition fame, traveled to England and France to immerse himself in horse racing. Upon his return to Kentucky, he organized the Louisville Jockey Club and Driving Park Associatation to raise funds for a racing facility, this was to be known as Churchill Downs. the first Derby took place on May 17, 1875. Jockey Oliver Lewis astride a colt named Aristides won the inaugural race. 
  
-Who wouldn't want to spend time with these majestic creatures!
+Today, the Kentucky Derby has become a much higher stakes race with the 2026 purse featuring a record total of $5 million with $3.1 million for the first place winner. The race is also famous for it's fanciful hats,mint juleps, and handsome rose blanket draped over the winning horse. Personally, I am intersted in spectating for the horses themselves. Who wouldn't want to gander at these majestic creatures!
 
 ![goofy-horse](/images/goofy-horse.gif)
 
 ## Accessing Data with Bash
 
+### cat
+
+One of the most useful bash commands 
+
 ### head, tail
 
-### cat
+```
+head -n 5 KDW.csv
+```
+
+```
+tail -n 5 KDW.csv
+```
 
 ### cut
 
@@ -159,6 +171,11 @@ Who wouldn't want to spend time with these majestic creatures!
 
 ### uniq
 
+### awk
+
+### grep
+
+## Piping Commands
 
 
 
@@ -167,9 +184,8 @@ Who wouldn't want to spend time with these majestic creatures!
 
 
 
-	- Accessing Rows
-	- Accessing Columns
-	- Searching for Specific Data in a File
+
+
 # Conducting Simple Calculations
 	- Who is the most winning trainer?
 		- Find the most frequently noted trainer in the trainer column.
@@ -187,4 +203,4 @@ Who wouldn't want to spend time with these majestic creatures!
 
 
 
-		
+

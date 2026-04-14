@@ -69,9 +69,23 @@ You should see something like `/dartfs-hpc/rc/home/8/f002yt8`. This is your home
 
 ## cd
 
-Now if you ever get lost, you can always go home. 
+Now if you ever get lost, you can always go home. To get home, all you need to do is click your heels.... no that's not right. All you need to do is execute the `cd ~` command. `cd` mean "change directories" and `~` stands for your home directory. This is automatically set up for you on the HPC system. On your local machines, your home directory will probaby be something like `/Users/noellekosarek`. 
 
 ![dorothy-no-place-like-home](/images/dorothy-no-place-like-home.gif)
+
+We can also use the `cd` command to move to different locations on the HPC system as well as our local machines. On the HPC system, this means that, so long as you have access, you can move to shared lab locations or even temporary directories. Today, we will be working in a temporary scratch directory on the HPC system. To get there just type or copy and paste in the following command: 
+
+```
+cd /scratch/kentucky-derby-bash-workshop
+```
+
+After running this command, use the `pwd` command to confirm that you are in the correct location. You should see this: `/scratch/kentucky-derby-bash-workshop`.
+
+## ls
+
+I'm interested in knowing what sorts of files or directories are living in this directory. To list the files and directories in this location, you can use the `ls` command. Typing in this command will reveal that we have a single file in this directory called `kentucky_derby_winners.csv`.This is the data file with which we will be working today. 
+
+
 
 	- Terminal Environment
 	- Moving Around Our Local Machine

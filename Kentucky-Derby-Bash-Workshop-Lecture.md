@@ -139,13 +139,52 @@ mv kentucky_derby_winners.csv KDW.csv
 Use `ls` to confirm that you have renamed this file. 
 
 # Accessing Data in A File
+
+## Kentucky Derby Winners Data
+The Kentucky Derby, known as "The Most Exciting Two Minutes in Sports", is a horse race held at Churchill Downs in Louisville, Kentucky every first Saturday in May. The Kentucky Derby is the first race in a series of races known as the Triple Crown. The race also boasts the title of the oldest continuously running sports event in the United States.
+ 
+Who wouldn't want to spend time with these majestic creatures!
+
+![goofy-horse](/images/goofy-horse.gif)
+
+## Accessing Data with Bash
+
+### head, tail
+
+### cat
+
+### cut
+
+### sort
+
+### uniq
+
+
+
+
+
+
+
+
+
 	- Accessing Rows
 	- Accessing Columns
 	- Searching for Specific Data in a File
 # Conducting Simple Calculations
 	- Who is the most winning trainer?
 		- Find the most frequently noted trainer in the trainer column.
+		- Solution: `cut -d',' -f<column_number> your_file.csv | tail -n +2 | sort | uniq -c | sort -rn | head -1`
+
+
 	- Which horse has the fastest time on the 1.25 distance track?
 		- Subset the data to the 1.25 track distance.
 		- Find the lowest number in the time.
 		- Return the name of the horse.
+		- Solution: `awk -F',' '$2 == "1.25" {print $0}' derby_winners.csv | tail -n +2 | sort -t',' -k<time_col>,<time_col>n | head -1 | cut -d',' -f<winner_col>`
+
+
+
+
+
+
+		

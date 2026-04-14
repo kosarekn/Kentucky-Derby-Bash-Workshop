@@ -36,7 +36,7 @@ As previously mentioned we will be making our foray into bash commands and scrip
 
 Once you have created an HPC account, navigate to your local machine's terminal. For Mac folks, this should be under Go -> Utilities -> Terminal. When you launch your terminal it should look something like this:
 
-![local-machine-terminal](/image/local-machine-terminal.png)
+![local-machine-terminal](/images/local-machine-terminal.png)
 
 
 

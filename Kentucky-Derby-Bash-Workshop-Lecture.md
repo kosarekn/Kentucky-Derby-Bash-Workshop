@@ -34,15 +34,45 @@ Taking the time to learn just a few bash commands is often valuable and makes yo
 
 As previously mentioned we will be making our foray into bash commands and scripting using Dartmouth's HPC systerm, Discovery. Prior to this workshop, you should have received an email from me with instructions on how to set up a Discovery account. If you still have not set up a Discovery account, you can do so using this [link]("https://dashboard.dartmouth.edu/research/hpc_account"). The system to get a discovery account is automated and your account should be ship shape in about a half hour if not sooner. 
 
+# Dartmouth's HPC
+
 Once you have created an HPC account, navigate to your local machine's terminal. For Mac folks, this should be under Go -> Utilities -> Terminal. When you launch your terminal it should look something like this:
 
 ![local-machine-terminal](/images/local-machine-terminal.png)
 
+After initiating a a terminal, type the following command into your terminal, making sure to type in your actual NetID. Note if you are not connected to eduroam, make sure you have the Dartmouth VPN turned on:
 
+```
+ssh YOUR_NETID@discovery.dartmouth.edu
+```
 
+If this is your first time logging into Dartmouth's HPC system, you will be asked something about fingerprint keys. Answer `yes` to this question and press enter again. If all goes well, you will be prompted for your password. Type in the password associated with your Dartmouth e-mail. This is the most challenging part of signing into the HPC system. You will not be able to see your password as you type. This is a security feature. The password screen should look something like below:
 
-# Dartmouth's HPC
+![local-machine-terminal-hpc-password-prompt](/images/local-machine-terminal-hpc-password-prompt.png)
+
+Press `Enter` after inputting your password. You will know you have successfully signed into the HPC system when your terminal looks like this:
+
+![discovery-home](/images/discovery-home.png)
+
+Huzzah! You are logged into Discovery, but where do I begin? To start, we will need to get familiar with a feew basic commands.
+
 # Basic Commands
+
+## pwd
+When we log into Discovery or initialize a terminal on our local machines, we are automatically logged into our home directory. We can confirm that we are in our home directory by using the command `pwd`. `pwd` means "print working directory". This command will print the absolute path to our home directory. Go ahead and type the following into Discovery:
+
+```
+pwd
+```
+
+You should see something like `/dartfs-hpc/rc/home/8/f002yt8`. This is your home directory. 
+
+## cd
+
+Now if you ever get lost, you can always go home. 
+
+![dorothy-no-place-like-home](/images/dorothy-no-place-like-home.gif)
+
 	- Terminal Environment
 	- Moving Around Our Local Machine
 	- Accessing Files 

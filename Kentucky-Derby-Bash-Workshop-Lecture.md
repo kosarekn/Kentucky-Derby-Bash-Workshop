@@ -85,11 +85,59 @@ After running this command, use the `pwd` command to confirm that you are in the
 
 I'm interested in knowing what sorts of files or directories are living in this directory. To list the files and directories in this location, you can use the `ls` command. Typing in this command will reveal that we have a single file in this directory called `kentucky_derby_winners.csv`.This is the data file with which we will be working today. 
 
+We can get a bit more information about this file by using flags with the following command:
 
+```
+ls -lah
+```
 
-	- Terminal Environment
-	- Moving Around Our Local Machine
-	- Accessing Files 
+Once again, we have used implemented the `ls` command. The flags `-lah` mean long listing, all files, and human-readable respectively. Long listing shows permissions, owners, groups, size, and time stamps for that file. All files shows both hidden and non-hidden files. Finally, human readable means that the output is printed in units that are able to be read by humans, not machines. 
+
+## mkdir
+
+As we progress through this workshop, we want to make sure we are writing output files to our own locations in the scratch directory. To do this, let's move up one dirctory from the Kentucky Derby directory and then make our own directory under our NetID where we will write out all of our output files. 
+
+To move up a single directory we can use our `cd` command followed by `..`. This tells our machine to move one directory up from our current directory. Copy and paste the following command into you terminal: 
+
+```
+cd ..
+```
+
+Now that we are in the scratch directory, it's time to introduce a new command, `mkdir`. This command mean to "make a new directory". The command should be followed by your actual NetID. This will create a directory with your NetID as the name. Use the following command to create the new directory:
+
+NOTE: MAKE SURE YOU REPLACE YOUR_NETID_HERE WITH YOUR ACTUAL NETID!
+
+```
+mkdir YOUR_NETID_HERE
+```
+
+To confirm that you have create the new directory, you can use the `ls` command and look to see if your NetID is shown in the output.
+
+## cp
+
+To make all of our lives slightly less complicated, I think that copying over the data file with which we will be working from the scratch directory for the workshop to your NetID directory. `cp` followed by the absolute path to the file you want to copy and then by the absolute path of the destination to which that file should be copied will complete this exercise for you. Use the code below, but make sure you replace YOU_NETID_HERE with your actual NetID:
+
+```
+cp /scratch/kentucky-derby-bash-workshop/kentucky_derby_winners.csv /scratch/YOUR_NETID_HERE
+```
+
+Once this command runs, use `cd` to change to the scratch directory under your NetID then use `ls` to ensure that the file has been roperly copied over. Take a look at the example code below for how to do this:
+
+```
+cd /scratch/YOUR_NETID_HERE
+ls
+```
+
+## mv
+
+In addition to coping files from one location to another, you can use the `mv` command to move files from one location to another. The `mv` command can also be used to rename files. Let's say we want to rename our `kentucky_derby_winners.csv` file to `KDW.csv`. We can complete this task using the following command:
+
+```
+mv kentucky_derby_winners.csv KDW.csv
+```
+
+Use `ls` to confirm that you have renamed this file. 
+
 # Accessing Data in A File
 	- Accessing Rows
 	- Accessing Columns

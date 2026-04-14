@@ -1,3 +1,12 @@
+# Welcome to The First Annual Kentucky Derby ..... Bash Workshop!
+
+## Learning Objectives
+- Develop an understanding of command line interpreters
+- Acquire knowledge of bash commands to move around your computer
+- Learn how to manipulate file contents using bash commands
+- Conduct simple analysis using bash
+- Horse around
+
 ## Command-Line Interpreters
 Command interpreters or command-line interface (CLI) allow users to interact with their computer system directly by inputting a set of commands. Interpreters were the only interface option up until the 1970's when graphical user interfaces (GUI) were created to reduce the "energy potential" required to begin computing. Still, CLIs are used today in lieu of GUIs because of their speed and resource conservation and well as their automation capibilities. CLIs operate in a continuous loop know as a REPL, or a Read-Eval-Print Loop. "Read" is indicated as a prompt, usually `>` or `$`. "Eval" identifies the commands and parameters then runs the associated programs. Finally, "Print" prints out the results of the command directly in the terminal. Do note, we can still write out results to sepeate files on our machine. 
 
@@ -205,11 +214,12 @@ Oh this just got very interesting! You will notice the `|` featured twice in thi
 
 ### awk
 
-We can use the `awk` command to find the names of horses that won during a specific span of years.
+The `awk` command is a tool that allows for text processing in Lixus and is used to analyze, filter, and manipulate structured data, such as that found in a .csv file. We can use the `awk` command to find the names of horses that won during a specific span of years.
 
 ```
 awk -F',' '$1 >= 1990 && $1 <= 2000 {print $1, $2}' kentucky_derby_winners.csv
 ```
+The `awk` command is followed by a `-F','` flag. This flag is the field separator flag indicating that this is a comma separated file. The next portion of this are the options. Here we are telling our program to look at the first column, which contains the years information and grab the data for the year 1990 up through 2000. From that information, we are asking the program to print the first and second columns containing the year and the name of the winning horse.
 
 ### grep
 
@@ -221,29 +231,62 @@ grep -c "Bill Hartack" kentucky_derby_winners.csv
 
 ## Putting It All Together!
 
+At the inception of this workshop we asked two interesting questions of our data: 
 
+1) Who is the most winning trainer
+2) Which horse has the fastest time on the 1.25 distance track?
 
+Let's apply our new bash commands to answer the first question. We will need to find the most frequently mentioned trainer in the trainer column. Let's first isolate the trainer column using the `cut` command.
 
+```
+cut -d',' -f4 kentucky_derby_winners.csv
+``` 
 
+I think the next step would be to implement the `uniq` command with the `-c` flag to count the occurances of the same trainer name, but remember with the `uniq` command we typically need to chain it with the `sort` command because the `uniq` command only recognizes occurances that are adjacent in the data. We will also need to pipe these commands together! 
 
+```
+`cut -d',' -f4 kentucky_derby_winners.csv | sort | uniq -c 
+```
 
+Now that we have the counts for each of the trainers, we will need to sort our data again, but this time, by the count information using the `-n` flag standing for numeric. Given that sort returns data from lowest to highest value, we will want to include the `-r` flag to reverse the order of the data returned. Finally, we will want to print out the very first value in the data, which will be the most winning trainer.
 
+```
+cut -d',' -f4 kentucky_derby_winners.csv | sort | uniq -c | sort -rn | head -1
+```
 
+Nice! Bob Baffert is the most winning trainer with 6 Kentucky Derby wins! 
 
-# Conducting Simple Calculations
-	- Who is the most winning trainer?
-		- Find the most frequently noted trainer in the trainer column.
-		- Solution: `cut -d',' -f4 kentucky_derby_winners.csv | sort | uniq -c | sort -rn | head -1`
+Now, those of you with some sports history knowledge or a subscription to Disney+ might know the answer to our second question, but let's take a stab at using the data at our disposal to answer the question of which horse has the fastest 1.25 mile record at the Kentucky Derby. To answer this question we will first need to subset the data to the 1.25 track distance and then find the lowest time in seconds. Finally, we will need to retun the name of the winning horse from that data. Let's use the `awk` command to subset the data set to include only the 1.25 track distance.
 
+```
+awk -F',' '$6 == "1.25" {print $0}' derby_winners.csv
+```
 
-	- Which horse has the fastest time on the 1.25 distance track?
-		- Subset the data to the 1.25 track distance.
-		- Find the lowest number in the time.
-		- Return the name of the horse.
-		- Solution: `awk -F',' '$2 == "1.25" {print $0}' derby_winners.csv | tail -n +2 | sort -t',' -k<time_col>,<time_col>n | head -1 | cut -d',' -f<winner_col>`
+Now that we have only the data for the 1.25 track distance, we will need to pipe this information to the `sort` command in order to sort by the time in seconds. Because the input is still comma separated we need to make sure we specify that in the output.
 
+```
+awk -F',' '$6 == "1.25" {print $0}' kentucky_derby_winners.csv | sort -t',' -k9
+```
 
+Next we want to return the top result from this using the `head` command and indicating that we want the first result.
 
+```
+awk -F',' '$6 == "1.25" {print $0}' kentucky_derby_winners.csv | sort -t',' -k9 | head -1
+```
+
+From this output we will isolate the name of the most winning horse in Kentucky Derby history.
+
+```
+awk -F',' '$6 == "1.25" {print $0}' kentucky_derby_winners.csv | sort -t',' -k9 | head -1 | cut -d',' -f2
+```
+
+The most winning horse in Kentuck Derby history is Secretariat!
+
+Secretariat, also known as Big Red, was the ninth winner of the American Triple Crown. This thoroughbred racehorse set and still holds the record for the fastest time in all three of the Triple Crown races. Secretariat was owned by Christopher and Penny Chenery of Meadow Stable. After his stunning victories in 1973, Secretariat retired at the ripe old age of 3 to Claiborne Farm in Paris, Kentucky. 
+
+![secretariat](/images/secretariat.jpg)
+
+Do you think his record will be beat this weekend?
 
 
 

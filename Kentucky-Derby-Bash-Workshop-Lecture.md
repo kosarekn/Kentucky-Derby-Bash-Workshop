@@ -153,13 +153,21 @@ Today, the Kentucky Derby has become a much higher stakes race with the 2026 pur
 
 ### cat
 
-One of the most useful bash commands 
+One of the most useful bash commands in our arsenal is the `cat` command standing for "concatenate". When used on a whole file, the `cat` command will print the contents of our file to the terminal window. Use the command below to view the contents of our whole file.
+
+```
+cat KDW.csv
+```
 
 ### head, tail
+
+Based on the output of the `cat` command, you can see where this might not be the most useful command to run on large files. You can image a situation in which you have RNA-seq files or meta data for thousands of single cells. Instead of printing the entire contents of a file we can print the first few lines of a file with the `head` command. In the below example, I am instructing bash to print the first 5 lines of the file as indicated by my use of the `-n` flag.
 
 ```
 head -n 5 KDW.csv
 ```
+
+Similarly, we can print the last few lines of a file using the `tail` command.
 
 ```
 tail -n 5 KDW.csv
@@ -167,15 +175,51 @@ tail -n 5 KDW.csv
 
 ### cut
 
+The `cut` command provides the user the power to extract specific sections from each line of a file. It particular, it is useful for accessing data in specific columns. Let's use the `cut` command to print the "winners" column of our data. 
+
+```
+cut -d ',' -f 2 KDW.csv
+```
+
+The `-d ','` flag indicates that the input file is a comma deliminated file. The `-f 2` flag indicates the field that should be displayed. Since the second column contains the names of the winning horses we all `2` after the `-f` flag. This command prints all of the winning horse names. 
+
 ### sort
+
+The `sort` command provides the user power to sort on columns alphabetically or numerically. Ordering the data in such a way allows us to observe trends and even return minimum and maximum values in a column. Today, we are intrested in sorting the entire file by the "time_sec" column indicating a horses finishing time in seconds. To do this, run the following code:
+
+```
+sort -t "," -k 9 KDW.csv
+```
+
+You see that we applied several flags to the `sort` command. The first flag is the `-t` flag, which serves the same purpose as the `-d` flag used with the `cut` command, it is indicative of a delimiter, in this case, a comma. The second flag is the `-k` flag. This flag indicates which column we are interested in using to sort our data. Column nine in our data is the "time_sec" column. Running this command will print the entire sorted data.
 
 ### uniq
 
+The `uniq` command only detects adjacent duplicate lines and is often paried with the `sort` command to determine instances of a string or number. Let's use this command to determine how many time different track conditions occurrd on Derby Day. 
+
+```
+cut -d',' -f7 kentucky_derby_winners.csv | sort | uniq -c
+```
+
+Oh this just got very interesting! You will notice the `|` featured twice in this line of code. This is known as a pipe. The output from the command before the `|` is "pipped" to the next command. This means that is the first part of this line of code isolates the "track_condition" column, which is column 7. The output of this is sent over the the next command `sort` so that all of the same strings "Fast", "Good", "Heavy", etc. are grouped together. This sorted data is then piped to the next command `uniq -c`. The `-c` flag directs the computer to count the number of instances of the adjact repeated strings. 
+
 ### awk
+
+We can use the `awk` command to find the names of horses that won during a specific span of years.
+
+```
+awk -F',' '$1 >= 1990 && $1 <= 2000 {print $1, $2}' kentucky_derby_winners.csv
+```
 
 ### grep
 
-## Piping Commands
+`grep` is a powerful command that allows users to search for a string in their file and even count the occurances of that string. We are interested in knowing how many times the name "Bill Hartack", a jockey, is mentioned in our data. Use the command below to find out!
+
+```
+grep -c "Bill Hartack" kentucky_derby_winners.csv
+```
+
+## Putting It All Together!
 
 
 
@@ -189,7 +233,7 @@ tail -n 5 KDW.csv
 # Conducting Simple Calculations
 	- Who is the most winning trainer?
 		- Find the most frequently noted trainer in the trainer column.
-		- Solution: `cut -d',' -f<column_number> your_file.csv | tail -n +2 | sort | uniq -c | sort -rn | head -1`
+		- Solution: `cut -d',' -f4 kentucky_derby_winners.csv | sort | uniq -c | sort -rn | head -1`
 
 
 	- Which horse has the fastest time on the 1.25 distance track?

@@ -1,4 +1,4 @@
-# Welcome to Our First Annual Kentucky Derby Bash Workshop
+# Welcome to Our First Annual Kentucky Derby Bash Workshop!
 
 Geat ready for the Run of the Roses!
 

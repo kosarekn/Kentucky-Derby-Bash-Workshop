@@ -6,7 +6,7 @@ This README will guide you through the steps necessary to prepare for this works
 
 ## 1) Request a High Performance Computing Account: 
 
-Please sign up for a High Performance Computing account using this (link)["https://dashboard.dartmouth.edu/research/hpc_account"] if you do not already have an account.
+Please sign up for a High Performance Computing account using this [link]["https://dashboard.dartmouth.edu/research/hpc_account"] if you do not already have an account.
 
 ## 2) Install and Activate Dartmouth's VPN
 

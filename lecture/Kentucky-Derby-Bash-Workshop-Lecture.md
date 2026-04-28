@@ -25,7 +25,7 @@ Back in ancient times, known as the mid 1900s, computers booted up and ran using
 
 Computer scientists like Louis Pouzin, Ken Thompson, and Stephen Bourne recognized that this system was inefficient and error prone, leading them to develop the first shells in the 60s and 70s. Of the shells available today, Bash stands out as most popular. 
 
-Today we will be interfacing with bash through the Dartmouth HPC system, Discovery. After logging into Discovery you will notice a prompt indicated by a `$`. This means that the shell is working properly and waiting for you input. While this while this black or white box can at first feel intimidating, just remember that bash is more of a helper tool that, when executed correctly, runs other appications installed on your system, or in this case Dartmouth's HPC system. 
+Today we will be interfacing with bash through the Dartmouth HPC system, Discovery. After logging into Discovery you will notice a prompt indicated by a `$`. This means that the shell is working properly and waiting for you input. While this black or white box can at first feel intimidating, just remember that bash is more of a helper tool that, when executed correctly, runs other applications installed on your system, or in this case Dartmouth's HPC system. 
 
 ## Why Use Bash?
 
@@ -63,7 +63,7 @@ Press `Enter` after inputting your password. You will know you have successfully
 
 ![discovery-home](/images/discovery-home.png)
 
-Huzzah! You are logged into Discovery, but where do I begin? To start, we will need to get familiar with a feew basic commands.
+Huzzah! You are logged into Discovery, but where do I begin? To start, we will need to get familiar with a few basic commands.
 
 # Basic Commands
 
@@ -152,7 +152,7 @@ Use `ls` to confirm that you have renamed this file.
 ## Kentucky Derby Winners Data
 The Kentucky Derby, known as "The Most Exciting Two Minutes in Sports", is a horse race held at Churchill Downs in Louisville, Kentucky every first Saturday in May. The Kentucky Derby is the first race in a series of races known as the Triple Crown. The race also boasts the title of the oldest continuously running sports event in the United States.
 
-The history of the Kentucky Derby goes back to 1875 when Meriwether Lewis Clark Jr., grandson of William Clark of Lewis and Clark Expedition fame, traveled to England and France to immerse himself in horse racing. Upon his return to Kentucky, he organized the Louisville Jockey Club and Driving Park Associatation to raise funds for a racing facility, this was to be known as Churchill Downs. the first Derby took place on May 17, 1875. Jockey Oliver Lewis astride a colt named Aristides won the inaugural race. 
+The history of the Kentucky Derby goes back to 1875 when Meriwether Lewis Clark Jr., grandson of William Clark of Lewis and Clark Expedition fame, traveled to England and France to immerse himself in horse racing. Upon his return to Kentucky, he organized the Louisville Jockey Club and Driving Park Associatation to raise funds for a racing facility, this was to be known as Churchill Downs. The first Derby took place on May 17, 1875. Jockey Oliver Lewis astride a colt named Aristides won the inaugural race. 
  
 Today, the Kentucky Derby has become a much higher stakes race with the 2026 purse featuring a record total of $5 million with $3.1 million for the first place winner. The race is also famous for it's fanciful hats,mint juleps, and handsome rose blanket draped over the winning horse. Personally, I am intersted in spectating for the horses themselves. Who wouldn't want to gander at these majestic creatures!
 

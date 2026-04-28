@@ -207,7 +207,7 @@ You see that we applied several flags to the `sort` command. The first flag is t
 The `uniq` command only detects adjacent duplicate lines and is often paried with the `sort` command to determine instances of a string or number. Let's use this command to determine how many time different track conditions occurrd on Derby Day. 
 
 ```
-cut -d',' -f7 kentucky_derby_winners.csv | sort | uniq -c
+cut -d',' -f7 KDW.csv | sort | uniq -c
 ```
 
 Oh this just got very interesting! You will notice the `|` featured twice in this line of code. This is known as a pipe. The output from the command before the `|` is "pipped" to the next command. This means that is the first part of this line of code isolates the "track_condition" column, which is column 7. The output of this is sent over the the next command `sort` so that all of the same strings "Fast", "Good", "Heavy", etc. are grouped together. This sorted data is then piped to the next command `uniq -c`. The `-c` flag directs the computer to count the number of instances of the adjact repeated strings. 
@@ -217,7 +217,7 @@ Oh this just got very interesting! You will notice the `|` featured twice in thi
 The `awk` command is a tool that allows for text processing in Lixus and is used to analyze, filter, and manipulate structured data, such as that found in a .csv file. We can use the `awk` command to find the names of horses that won during a specific span of years.
 
 ```
-awk -F',' '$1 >= 1990 && $1 <= 2000 {print $1, $2}' kentucky_derby_winners.csv
+awk -F',' '$1 >= 1990 && $1 <= 2000 {print $1, $2}' KDW.csv
 ```
 The `awk` command is followed by a `-F','` flag. This flag is the field separator flag indicating that this is a comma separated file. The next portion of this are the options. Here we are telling our program to look at the first column, which contains the years information and grab the data for the year 1990 up through 2000. From that information, we are asking the program to print the first and second columns containing the year and the name of the winning horse.
 
@@ -226,7 +226,7 @@ The `awk` command is followed by a `-F','` flag. This flag is the field separato
 `grep` is a powerful command that allows users to search for a string in their file and even count the occurances of that string. We are interested in knowing how many times the name "Bill Hartack", a jockey, is mentioned in our data. Use the command below to find out!
 
 ```
-grep -c "Bill Hartack" kentucky_derby_winners.csv
+grep -c "Bill Hartack" KDW.csv
 ```
 
 ## Putting It All Together!
@@ -239,19 +239,19 @@ At the inception of this workshop we asked two interesting questions of our data
 Let's apply our new bash commands to answer the first question. We will need to find the most frequently mentioned trainer in the trainer column. Let's first isolate the trainer column using the `cut` command.
 
 ```
-cut -d',' -f4 kentucky_derby_winners.csv
+cut -d',' -f4 KDW.csv
 ``` 
 
 I think the next step would be to implement the `uniq` command with the `-c` flag to count the occurances of the same trainer name, but remember with the `uniq` command we typically need to chain it with the `sort` command because the `uniq` command only recognizes occurances that are adjacent in the data. We will also need to pipe these commands together! 
 
 ```
-`cut -d',' -f4 kentucky_derby_winners.csv | sort | uniq -c 
+`cut -d',' -f4 KDW.csv | sort | uniq -c 
 ```
 
 Now that we have the counts for each of the trainers, we will need to sort our data again, but this time, by the count information using the `-n` flag standing for numeric. Given that sort returns data from lowest to highest value, we will want to include the `-r` flag to reverse the order of the data returned. Finally, we will want to print out the very first value in the data, which will be the most winning trainer.
 
 ```
-cut -d',' -f4 kentucky_derby_winners.csv | sort | uniq -c | sort -rn | head -1
+cut -d',' -f4 KDW.csv | sort | uniq -c | sort -rn | head -1
 ```
 
 Nice! Bob Baffert is the most winning trainer with 6 Kentucky Derby wins! 
@@ -259,25 +259,25 @@ Nice! Bob Baffert is the most winning trainer with 6 Kentucky Derby wins!
 Now, those of you with some sports history knowledge or a subscription to Disney+ might know the answer to our second question, but let's take a stab at using the data at our disposal to answer the question of which horse has the fastest 1.25 mile record at the Kentucky Derby. To answer this question we will first need to subset the data to the 1.25 track distance and then find the lowest time in seconds. Finally, we will need to retun the name of the winning horse from that data. Let's use the `awk` command to subset the data set to include only the 1.25 track distance.
 
 ```
-awk -F',' '$6 == "1.25" {print $0}' derby_winners.csv
+awk -F',' '$6 == "1.25" {print $0}' KDW.csv
 ```
 
 Now that we have only the data for the 1.25 track distance, we will need to pipe this information to the `sort` command in order to sort by the time in seconds. Because the input is still comma separated we need to make sure we specify that in the output.
 
 ```
-awk -F',' '$6 == "1.25" {print $0}' kentucky_derby_winners.csv | sort -t',' -k9
+awk -F',' '$6 == "1.25" {print $0}' KDW.csv | sort -t',' -k9
 ```
 
 Next we want to return the top result from this using the `head` command and indicating that we want the first result.
 
 ```
-awk -F',' '$6 == "1.25" {print $0}' kentucky_derby_winners.csv | sort -t',' -k9 | head -1
+awk -F',' '$6 == "1.25" {print $0}' KDW.csv | sort -t',' -k9 | head -1
 ```
 
 From this output we will isolate the name of the most winning horse in Kentucky Derby history.
 
 ```
-awk -F',' '$6 == "1.25" {print $0}' kentucky_derby_winners.csv | sort -t',' -k9 | head -1 | cut -d',' -f2
+awk -F',' '$6 == "1.25" {print $0}' KDW.csv | sort -t',' -k9 | head -1 | cut -d',' -f2
 ```
 
 The most winning horse in Kentuck Derby history is Secretariat!
